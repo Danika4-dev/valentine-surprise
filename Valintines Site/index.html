@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L&D Valentine Story</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(180deg,#f40a12,#fff3e8);
+  overflow-x:hidden;
+}
+#musicOverlay{
+ position:fixed;
+ inset:0;
+ background:#f3c8c8;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-size:24px;
+ z-index:999999;
+ cursor:pointer;
+}
+/* Floating Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:floatUp 8s linear infinite;
+  opacity:0.7;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-110vh);}
+}
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  text-align:center;
+}
+h1{
+  color:#050000;
+}
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  max-width:650px;
+  width:90%;
+}
+.memory img{
+  width:240px;
+  height:240px;
+  object-fit:cover;
+  border-radius:15px;
+  margin:10px;
+}
+/* Countdown */
+#countdown{
+  font-size:28px;
+  font-weight:bold;
+  color:#ff3b3b;
+}
+/* Buttons */
+.button-zone{
+  position:relative;
+  height:150px;
+  width:300px;
+  margin:auto;
+}
+button{
+  position:absolute;
+  padding:14px 24px;
+  border:none;
+  border-radius:50px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+#yesBtn{
+  left:15%;
+  background:#ff4d4d;
+  color:white;
+}
+#noBtn{
+  left:60%;
+  background:#ddd;
+}
+.timeline{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  padding:20px;
+  scroll-snap-type:x mandatory;
+}
+.memory{
+  min-width:250px;
+  background:white;
+  border-radius:20px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  scroll-snap-align:center;
+}
+.result{
+  display:none;
+}
+.cursor-heart{
+  position:fixed;
+  font-size:18px;
+  pointer-events:none;
+  animation:fadeUp 1s forwards;
+  z-index:9999;
+}
+@keyframes fadeUp{
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+  to{
+    opacity:0;
+    transform:translateY(-25px);
+  }
+}
+#secretPage{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,#ffccd5,#fff0f5);
+  z-index:99999;
+  justify-content:center;
+  align-items:center;
+}
+.secretContent{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  max-width:600px;
+  text-align:center;
+}
+/* CORNER CLOSE BUTTON */
+#closeSecretBtn{
+  position:fixed;
+  top:15px;
+  right:20px;
+  background:#ff4d4d;
+  color:white;
+  border:none;
+  font-size:18px;
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:100000;
+}
+#secretPage{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:linear-gradient(180deg,#ffccd5,#fff0f5);
+ justify-content:center;
+ align-items:center;
+ z-index:99999;
+}
+.secretContent{
+ background:white;
+ padding:30px;
+ border-radius:20px;
+ text-align:center;
+ max-width:600px;
+}
+/* Corner Close Button */
+#closeSecretBtn{
+ position:fixed;
+ top:15px;
+ right:20px;
+ background:#ff4d4d;
+ color:white;
+ border:none;
+ font-size:18px;
+ padding:10px 14px;
+ border-radius:50%;
+ cursor:pointer;
+ z-index:100000;
+}
+</style>
+</head>
+<body>
+<!-- Background Music -->
+<audio id="loveSong" loop>
+  <source src="music/love.mp3" type="audio/mp3">
+</audio>
+<div id="musicOverlay">
+  <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>
+</div>
+<!-- Floating Hearts Script -->
+<script>
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+},500);
+</script>
+<!-- SECTION 1 INTRO -->
+<section>
+<div class="card">
+<h1>Luan Vernon Smith...</h1>
+<h2>Ek het vir jou ietsie gemaak ❤️</h2>
+<p>Scroll so bietjie-bietjie af...</p>
+</div>
+</section>
+<!-- SECTION 2 COUNTDOWN -->
+<section>
+<div class="card">
+<h1>Die groot aftel na Valentynsdag!</h1>
+<div id="countdown"></div>
+</div>
+</section>
+<!-- SECTION 3 MEMORY TIMELINE -->
+<section>
+<h1>Ons spesiale oomblikkies 📸</h1>
+<div class="timeline">
+<div class="memory">
+<img src="Images/MatriekAfskeid24.jpg">
+<p>Die dag toe jy my hart gesteel het 💕</p>
+</div>
+<div class="memory">
+<img src="Images/BeginDate25.jpg">
+<p>Een van my heel gunsteling herinneringe 🥰</p>
+</div>
+<div class="memory">
+<img src="Images/DVerjaar25.jpg">
+<p>Ek giggel nou nog as ek daaraan dink! 😂</p>
+</div>
+</div>
+</section>
+<!-- SECTION 4 VALENTINE QUESTION -->
+<section>
+<div class="card">
+<h1>Sal jy my Valentyn wees?</h1>
+<p>Van D ❤️</p>
+<div class="button-zone" id="zone">
+<button id="yesBtn">Ja 😍</button>
+<button id="noBtn">Nee 🙄</button>
+</div>
+<div class="result" id="result">
+<h2>Jy’t my nou net die heel gelukkigste meisie gemaak 🥹❤️</h2>
+<p>Jy’s nou vir altyd met my opgesaal 😌</p>
+</div>
+</div>
+</section>
+<script>
+const music = document.getElementById("loveSong");
+music.volume = 0.8; // loud but not painful (1 = max)
+function startMusic(){
+  music.play().catch(()=>{});
+}
+const overlay = document.getElementById("musicOverlay");
+overlay.addEventListener("click", ()=>{
+ music.play();
+ overlay.style.display="none";
+});
+/* COUNTDOWN */
+const countdown=document.getElementById("countdown");
+const valentines=new Date("Feb 14, 2026 00:00:00").getTime();
+setInterval(()=>{
+  let now=new Date().getTime();
+  let distance=valentines-now;
+  let days=Math.floor(distance/(1000*60*60*24));
+  let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  let mins=Math.floor((distance%(1000*60*60))/(1000*60));
+  countdown.innerHTML=`${days} Dae ${hours} Ure ${mins} Minute`;
+},1000);
+/* HEART CURSOR TRAIL */
+document.addEventListener("pointermove", e=>{
+  const heart=document.createElement("div");
+  heart.classList.add("cursor-heart");
+  heart.innerHTML="💖";
+  heart.style.left=e.clientX+"px";
+  heart.style.top=e.clientY+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),1000);
+});
+/* RUNNING NO BUTTON */
+const zone=document.getElementById("zone");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const result=document.getElementById("result");
+function clamp(n,min,max){
+ return Math.max(min,Math.min(max,n));
+}
+function moveNo(px,py){
+ const z=zone.getBoundingClientRect();
+ const b=noBtn.getBoundingClientRect();
+ let dx=(b.left+b.width/2)-px;
+ let dy=(b.top+b.height/2)-py;
+ let mag=Math.hypot(dx,dy)||1;
+ dx/=mag;
+ dy/=mag;
+ let newLeft=(b.left-z.left)+dx*140;
+ let newTop=(b.top-z.top)+dy*140;
+ newLeft=clamp(newLeft,0,z.width-b.width);
+ newTop=clamp(newTop,0,z.height-b.height);
+ noBtn.style.left=newLeft+"px";
+ noBtn.style.top=newTop+"px";
+}
+zone.addEventListener("pointermove",e=>{
+ const b=noBtn.getBoundingClientRect();
+ const d=Math.hypot(
+   (b.left+b.width/2)-e.clientX,
+   (b.top+b.height/2)-e.clientY
+ );
+ if(d<120) moveNo(e.clientX,e.clientY);
+});
+yesBtn.addEventListener("click",()=>{
+ result.style.display="block";
+ confetti({particleCount:200,spread:120});
+});
+/* SECRET PAGE */
+let secretCounter=0;
+function openSecret(){
+ document.getElementById("secretPage").style.display="flex";
+}
+function closeSecret(){
+ document.getElementById("secretPage").style.display="none";
+}
+/* Trigger by YES spam */
+yesBtn.addEventListener("click",()=>{
+ secretCounter++;
+ if(secretCounter>=2){
+   openSecret();
+ }
+});
+/* Trigger by keyboard S */
+document.addEventListener("keydown",e=>{
+ if(e.key.toLowerCase()==="s"){
+   openSecret();
+ }
+});
+</script>
+<!-- HIDDEN SURPRISE PAGE -->
+<div id="secretPage">
+<button id="closeSecretBtn" onclick="closeSecret()">✖</button>
+<div class="secretContent">
+  <h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
+  <p>Liefste Luan,</p>
+        <p>Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het. Die tyd vlieg as 'n mens soveel pret het, en elke daggie saam met jou is vir my 'n geskenk.
+        Dankie dat jy my veilige plek, my vrolikheid en my heel gunsteling mensie is. Jy laat my hart sommer vinniger klop (en my maag vol skoenlappers voel!) elke keer as ek jou sien. Dankie vir al die giggels en die mooi oomblikke wat ons reeds gedeel het.
+        Ek waardeer elke herinnering wat ons tot nou toe gemaak het, en ek kan nie wag vir ons toekoms saam nie 😉</p>
+        <p>Jy het my die heel gelukkigste meisie gemaak.
+    D ❤️
+  </p>
+  <p>Vir altyd jou D 💕</p>
+</div>
+</div>
+</body>
+</html>
