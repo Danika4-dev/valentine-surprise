@@ -57,10 +57,11 @@ h1{
 }
 .memory img{
   width:100%;
-  aspect-ratio:4/3;
+  max-width:240px;
+  aspect-ratio:1/1;
   object-fit:cover;
   border-radius:15px;
-  margin-bottom:10px;
+  margin:10px;
 }
 /* Countdown */
 #countdown{
@@ -93,13 +94,12 @@ button{
   left:60%;
   background:#ddd;
 }
-.timeline{
-  display:flex;
-  overflow-x:auto;
-  gap:20px;
-  padding:20px;
-  scroll-snap-type:x mandatory;
-  justify-content:center;
+.timeline{ 
+  display:flex; 
+  overflow-x:auto; 
+  gap:20px; 
+  padding:20px; 
+  scroll-snap-type:x mandatory; 
 }
 .memory{
   min-width:250px;
@@ -427,6 +427,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
