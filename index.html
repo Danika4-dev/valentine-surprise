@@ -57,11 +57,10 @@ h1{
 }
 .memory img{
   width:100%;
-  max-width:240px;
-  aspect-ratio:1/1;
+  aspect-ratio:4/3;
   object-fit:cover;
   border-radius:15px;
-  margin:10px;
+  margin-bottom:10px;
 }
 /* Countdown */
 #countdown{
@@ -100,6 +99,7 @@ button{
   gap:20px;
   padding:20px;
   scroll-snap-type:x mandatory;
+  justify-content:center;
 }
 .memory{
   min-width:250px;
@@ -243,6 +243,13 @@ button{
     font-size:20px;
     padding:20px;
   }
+  .timeline{
+  padding:10px;
+}
+.memory{
+  width:90%;
+  min-width:90%;
+}
 }
 </style>
 </head>
@@ -420,6 +427,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
