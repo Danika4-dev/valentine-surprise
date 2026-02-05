@@ -101,6 +101,7 @@ button{
   padding:20px; 
   scroll-snap-type:x mandatory; 
 }
+  /*
 .memory{
   min-width:250px;
   background:white;
@@ -109,6 +110,23 @@ button{
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
   scroll-snap-align:center;
 }
+  */
+
+.memory{
+  width:280px;
+  height:340px;
+  background:white;
+  border-radius:20px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  scroll-snap-align:center;
+  flex-shrink:0;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+  
 .result{
   display:none;
 }
@@ -251,6 +269,23 @@ button{
   min-width:90%;
 }
 }
+
+
+@media (max-width:600px){
+
+  .memory{
+    width:85vw;
+    height:auto;
+  }
+
+  .memory img{
+    height:auto;
+    aspect-ratio:4/3;
+  }
+
+}
+
+  
 </style>
 </head>
 <body>
@@ -427,6 +462,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
