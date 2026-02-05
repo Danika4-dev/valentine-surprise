@@ -188,6 +188,76 @@ button{
  cursor:pointer;
  z-index:100000;
 }
+
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+@media (max-width: 768px){
+
+  section{
+    padding:30px 15px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
+  p{
+    font-size:15px;
+  }
+
+  .card{
+    padding:18px;
+    width:95%;
+  }
+
+  /* Images resize for phones */
+  .memory img{
+    width:100%;
+    height:auto;
+    max-width:260px;
+  }
+
+  /* Timeline memory cards */
+  .memory{
+    min-width:80%;
+  }
+
+  /* Buttons reposition for mobile */
+  .button-zone{
+    width:100%;
+    height:180px;
+  }
+
+  #yesBtn{
+    left:10%;
+    font-size:16px;
+    padding:12px 20px;
+  }
+
+  #noBtn{
+    left:55%;
+    font-size:16px;
+    padding:12px 20px;
+  }
+
+  #countdown{
+    font-size:22px;
+  }
+
+  .secretContent{
+    width:90%;
+    padding:20px;
+  }
+
+  #musicOverlay h2{
+    font-size:20px;
+    padding:20px;
+  }
+}
+  
 </style>
 </head>
 <body>
@@ -364,6 +434,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
