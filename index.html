@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L&D Valentine Story</title>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <style>
+
+/* ===== GLOBAL ===== */
 body{
   margin:0;
   font-family:Arial, sans-serif;
@@ -24,7 +28,7 @@ body{
   font-size:24px;
   z-index:999999;
   cursor:pointer;
-  padding:20px;
+  padding:30px;
   text-align:center;
 }
 
@@ -49,16 +53,13 @@ section{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:40px 20px;
+  padding:60px 20px;
   text-align:center;
 }
 
-section:first-of-type .card{
-  margin-top:30px;
-}
-
-h1{
-  color:#050000;
+/* Extra spacing first screen */
+section:first-of-type{
+  padding-top:90px;
 }
 
 /* ===== CARDS ===== */
@@ -71,15 +72,18 @@ h1{
   width:90%;
 }
 
+h1{color:#050000;}
+
 /* ===== TIMELINE ===== */
 .timeline{
   display:flex;
   overflow-x:auto;
   gap:20px;
   padding:20px;
+
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;
-  scroll-padding:50%;
+  overscroll-behavior-x:contain;
 }
 
 /* Hide scrollbar */
@@ -94,17 +98,15 @@ h1{
   border-radius:20px;
   padding:15px;
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  scroll-snap-align:center;
+  scroll-snap-align:start;
   flex-shrink:0;
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
 }
 
-/* Images */
 .memory img{
   width:100%;
-  aspect-ratio:4/3;
+  height:200px;
   object-fit:cover;
   border-radius:15px;
   margin-bottom:10px;
@@ -146,9 +148,7 @@ button{
   background:#ddd;
 }
 
-.result{
-  display:none;
-}
+.result{display:none;}
 
 /* ===== CURSOR HEART ===== */
 .cursor-heart{
@@ -173,6 +173,7 @@ button{
   z-index:99999;
   justify-content:center;
   align-items:center;
+  padding:20px;
 }
 
 .secretContent{
@@ -180,14 +181,15 @@ button{
   padding:30px;
   border-radius:20px;
   max-width:600px;
-  width:90%;
+  width:100%;
   text-align:center;
+  margin-top:40px;
 }
 
 #closeSecretBtn{
   position:fixed;
   top:15px;
-  right:20px;
+  right:15px;
   background:#ff4d4d;
   color:white;
   border:none;
@@ -202,7 +204,7 @@ button{
 @media (max-width:768px){
 
   section{
-    padding:30px 15px;
+    padding:40px 15px;
   }
 
   h1{font-size:24px;}
@@ -214,11 +216,18 @@ button{
     width:95%;
   }
 
+  /* Timeline cards responsive */
   .memory{
     width:85vw;
     height:auto;
   }
 
+  .memory img{
+    height:auto;
+    aspect-ratio:4/3;
+  }
+
+  /* Buttons */
   .button-zone{
     width:100%;
     height:180px;
@@ -237,18 +246,28 @@ button{
   #countdown{
     font-size:22px;
   }
+
+  #musicOverlay{
+    font-size:20px;
+  }
+
 }
+
 </style>
 </head>
+
 <body>
-<!-- Background Music -->
+
+<!-- MUSIC -->
 <audio id="loveSong" loop>
   <source src="Music/LuanLiedjie.mp3" type="audio/mp3">
 </audio>
+
 <div id="musicOverlay">
-  <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>  
+  <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>
 </div>
-<!-- Floating Hearts Script -->
+
+<!-- FLOATING HEARTS -->
 <script>
 setInterval(()=>{
   const heart=document.createElement("div");
@@ -260,174 +279,169 @@ setInterval(()=>{
   setTimeout(()=>heart.remove(),8000);
 },500);
 </script>
-<!-- SECTION 1 INTRO -->
+
+<!-- INTRO -->
 <section>
 <div class="card">
 <h1>Luan Vernon Smith...</h1>
 <h2>Ek het vir jou ietsie gemaak ❤️</h2>
 <p>Scroll so bietjie-bietjie af...</p>
 </div>
-</section> 
-<!-- SECTION 2 COUNTDOWN -->
+</section>
+
+<!-- COUNTDOWN -->
 <section>
 <div class="card">
 <h1>Die groot aftel na Valentynsdag!</h1>
 <div id="countdown"></div>
 </div>
 </section>
-<!-- SECTION 3 MEMORY TIMELINE -->
+
+<!-- TIMELINE -->
 <section>
 <h1>Ons spesiale oomblikkies 📸</h1>
+
 <div class="timeline">
+
 <div class="memory">
-<img src="Images /MatriekAfskeid24.jpg">
+<img src="Images/MatriekAfskeid24.jpg">
 <p>Die dag toe jy my hart gesteel het 💕</p>
 </div>
+
 <div class="memory">
-<img src="Images /BeginDate25.jpg">
+<img src="Images/BeginDate25.jpg">
 <p>Een van my heel gunsteling herinneringe 🥰</p>
 </div>
+
 <div class="memory">
-<img src="Images /DVerjaar25.jpg">
+<img src="Images/DVerjaar25.jpg">
 <p>Ek giggel nou nog as ek daaraan dink! 😂</p>
 </div>
+
 </div>
 </section>
-<!-- SECTION 4 VALENTINE QUESTION -->
+
+<!-- QUESTION -->
 <section>
 <div class="card">
 <h1>Sal jy my Valentyn wees?</h1>
 <p>Van D ❤️</p>
+
 <div class="button-zone" id="zone">
 <button id="yesBtn">Ja 😍</button>
 <button id="noBtn">Nee 🙄</button>
 </div>
+
 <div class="result" id="result">
 <h2>Jy’t my nou net die heel gelukkigste meisie gemaak 🥹❤️</h2>
 <p>Jy’s nou vir altyd met my opgesaal 😌</p>
 </div>
+
 </div>
 </section>
+
 <script>
-const music = document.getElementById("loveSong");
-music.volume = 0.8; // loud but not painful (1 = max)
-function startMusic(){
-  music.play().catch(()=>{});
-}
-const overlay = document.getElementById("musicOverlay");
-overlay.addEventListener("click", ()=>{
+
+/* MUSIC */
+const music=document.getElementById("loveSong");
+document.getElementById("musicOverlay").onclick=()=>{
  music.play();
- overlay.style.display="none";
-});
+ music.volume=0.8;
+ musicOverlay.style.display="none";
+};
+
 /* COUNTDOWN */
-const countdown=document.getElementById("countdown");
 const valentines=new Date("Feb 14, 2026 00:00:00").getTime();
 setInterval(()=>{
-  let now=new Date().getTime();
-  let distance=valentines-now;
-  let days=Math.floor(distance/(1000*60*60*24));
-  let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  let mins=Math.floor((distance%(1000*60*60))/(1000*60));
-  countdown.innerHTML=`${days} Dae ${hours} Ure ${mins} Minute`;
+ let now=new Date().getTime();
+ let d=valentines-now;
+ let days=Math.floor(d/(1000*60*60*24));
+ let hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+ let mins=Math.floor((d%(1000*60*60))/(1000*60));
+ countdown.innerHTML=`${days} Dae ${hours} Ure ${mins} Minute`;
 },1000);
-/* HEART CURSOR TRAIL */
-document.addEventListener("pointermove", e=>{
-  const heart=document.createElement("div");
-  heart.classList.add("cursor-heart");
-  heart.innerHTML="💖";
-  heart.style.left=e.clientX+"px";
-  heart.style.top=e.clientY+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),1000);
+
+/* HEART TRAIL */
+document.addEventListener("pointermove",e=>{
+ const h=document.createElement("div");
+ h.className="cursor-heart";
+ h.innerHTML="💖";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),1000);
 });
+
 /* RUNNING NO BUTTON */
 const zone=document.getElementById("zone");
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
 const result=document.getElementById("result");
-function clamp(n,min,max){
- return Math.max(min,Math.min(max,n));
-}
-function moveNo(px,py){
- const z=zone.getBoundingClientRect();
- const b=noBtn.getBoundingClientRect();
- let dx=(b.left+b.width/2)-px;
- let dy=(b.top+b.height/2)-py;
- let mag=Math.hypot(dx,dy)||1;
- dx/=mag;
- dy/=mag;
- let newLeft=(b.left-z.left)+dx*140;
- let newTop=(b.top-z.top)+dy*140;
- newLeft=clamp(newLeft,0,z.width-b.width);
- newTop=clamp(newTop,0,z.height-b.height);
- noBtn.style.left=newLeft+"px";
- noBtn.style.top=newTop+"px";
-}
+
+function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
+
 zone.addEventListener("pointermove",e=>{
  const b=noBtn.getBoundingClientRect();
- const d=Math.hypot(
-   (b.left+b.width/2)-e.clientX,
-   (b.top+b.height/2)-e.clientY
- );
- if(d<120) moveNo(e.clientX,e.clientY);
+ const z=zone.getBoundingClientRect();
+ const d=Math.hypot((b.left+b.width/2)-e.clientX,(b.top+b.height/2)-e.clientY);
+
+ if(d<120){
+  let dx=(b.left+b.width/2)-e.clientX;
+  let dy=(b.top+b.height/2)-e.clientY;
+  let mag=Math.hypot(dx,dy)||1;
+  dx/=mag; dy/=mag;
+
+  let newLeft=(b.left-z.left)+dx*140;
+  let newTop=(b.top-z.top)+dy*140;
+
+  noBtn.style.left=clamp(newLeft,0,z.width-b.width)+"px";
+  noBtn.style.top=clamp(newTop,0,z.height-b.height)+"px";
+ }
 });
-yesBtn.addEventListener("click",()=>{
+
+/* YES BUTTON */
+let secretCounter=0;
+
+yesBtn.onclick=()=>{
  result.style.display="block";
  confetti({particleCount:200,spread:120});
-});
+ secretCounter++;
+ if(secretCounter>=2) openSecret();
+};
+
 /* SECRET PAGE */
-let secretCounter=0;
 function openSecret(){
  document.getElementById("secretPage").style.display="flex";
 }
+
 function closeSecret(){
  document.getElementById("secretPage").style.display="none";
 }
-/* Trigger by YES spam */
-yesBtn.addEventListener("click",()=>{
- secretCounter++;
- if(secretCounter>=2){
-   openSecret();
- }
-});
-/* Trigger by keyboard S */
+
 document.addEventListener("keydown",e=>{
- if(e.key.toLowerCase()==="s"){
-   openSecret();
- }
+ if(e.key.toLowerCase()==="s") openSecret();
 });
+
 </script>
-<!-- HIDDEN SURPRISE PAGE -->
+
+<!-- SECRET PAGE -->
 <div id="secretPage">
 <button id="closeSecretBtn" onclick="closeSecret()">✖</button>
+
 <div class="secretContent">
-  <h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
-  <p>Liefste Luan,</p>
-        <p>Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het. Die tyd vlieg as 'n mens soveel pret het, en elke daggie saam met jou is vir my 'n geskenk.
-        Dankie dat jy my veilige plek, my vrolikheid en my heel gunsteling mensie is. Jy laat my hart sommer vinniger klop (en my maag vol skoenlappers voel!) elke keer as ek jou sien. Dankie vir al die giggels en die mooi oomblikke wat ons reeds gedeel het.
-        Ek waardeer elke herinnering wat ons tot nou toe gemaak het, en ek kan nie wag vir ons toekoms saam nie 😉</p>
-        <p>Jy het my die heel gelukkigste meisie gemaak.
-    D ❤️
-  </p>
-  <p>Vir altyd jou D 💕</p>
+<h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
+
+<p>Liefste Luan,</p>
+
+<p>
+Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het...
+</p>
+
+<p>Jy het my die heel gelukkigste meisie gemaak. D ❤️</p>
+<p>Vir altyd jou D 💕</p>
+
 </div>
 </div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
