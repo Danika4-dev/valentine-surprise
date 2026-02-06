@@ -12,6 +12,9 @@ body{
   background:linear-gradient(180deg,#f40a12,#fff3e8);
   overflow-x:hidden;
 }
+
+
+  
 #musicOverlay{
  position:fixed;
  inset:0;
@@ -111,6 +114,24 @@ button{
   padding:20px; 
   scroll-snap-type:x mandatory; 
 }
+
+
+.timeline-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    touch-action: pan-x;
+}
+
+.timeline-container img {
+    width: 80%;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    border-radius: 15px;
+}
+  
 /*.memory{
   width:280px;
   height:340px;
@@ -220,6 +241,29 @@ button{
  z-index:100000;
 }
 /* ===== MOBILE RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+
+    #click-open {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .timeline-container {
+        justify-content: center;
+    }
+
+    .timeline-container img {
+        width: 85%;
+    }
+
+}
+  
+  
 @media (max-width: 768px){
   section{
     padding:30px 15px;
@@ -238,7 +282,7 @@ button{
     width:95%;
   }
   /* Images resize for phones */
-  .memory img{
+ /* .memory img{
     width:100%;
     height:auto;
     max-width:260px;
@@ -486,6 +530,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
