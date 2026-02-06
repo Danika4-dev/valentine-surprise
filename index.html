@@ -4,11 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L&D Valentine Story</title>
-
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
 <style>
-
 /* ===== GLOBAL ===== */
 body{
   margin:0;
@@ -16,7 +13,6 @@ body{
   background:linear-gradient(180deg,#f40a12,#fff3e8);
   overflow-x:hidden;
 }
-
 /* ===== MUSIC OVERLAY ===== */
 #musicOverlay{
   position:fixed;
@@ -31,7 +27,6 @@ body{
   padding:30px;
   text-align:center;
 }
-
 /* ===== FLOATING HEARTS ===== */
 .heart{
   position:fixed;
@@ -40,12 +35,10 @@ body{
   animation:floatUp 8s linear infinite;
   opacity:0.7;
 }
-
 @keyframes floatUp{
   from{transform:translateY(0);}
   to{transform:translateY(-110vh);}
 }
-
 /* ===== SECTIONS ===== */
 section{
   min-height:100vh;
@@ -56,12 +49,10 @@ section{
   padding:60px 20px;
   text-align:center;
 }
-
 /* Extra spacing first screen */
 section:first-of-type{
   padding-top:90px;
 }
-
 /* ===== CARDS ===== */
 .card{
   background:white;
@@ -71,9 +62,7 @@ section:first-of-type{
   max-width:650px;
   width:90%;
 }
-
 h1{color:#050000;}
-
 /* ===== TIMELINE ===== */
 .timeline{
   display:flex;
@@ -85,12 +74,10 @@ h1{color:#050000;}
   -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
 }
-
 /* Hide scrollbar */
 .timeline::-webkit-scrollbar{
   display:none;
 }
-
 .memory{
   width:280px;
   height:340px;
@@ -103,7 +90,6 @@ h1{color:#050000;}
   display:flex;
   flex-direction:column;
 }
-
 .memory img{
   width:100%;
   height:200px;
@@ -111,14 +97,12 @@ h1{color:#050000;}
   border-radius:15px;
   margin-bottom:10px;
 }
-
 /* ===== COUNTDOWN ===== */
 #countdown{
   font-size:28px;
   font-weight:bold;
   color:#ff3b3b;
 }
-
 /* ===== BUTTONS ===== */
 .button-zone{
   position:relative;
@@ -126,7 +110,6 @@ h1{color:#050000;}
   width:300px;
   margin:auto;
 }
-
 button{
   position:absolute;
   padding:14px 24px;
@@ -136,20 +119,16 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-
 #yesBtn{
   left:15%;
   background:#ff4d4d;
   color:white;
 }
-
 #noBtn{
   left:60%;
   background:#ddd;
 }
-
 .result{display:none;}
-
 /* ===== CURSOR HEART ===== */
 .cursor-heart{
   position:fixed;
@@ -158,7 +137,6 @@ button{
   animation:fadeUp 1s forwards;
   z-index:9999;
 }
-
 @keyframes fadeUp{
   from{opacity:1; transform:translateY(0);}
   to{opacity:0; transform:translateY(-25px);}
@@ -175,7 +153,6 @@ button{
   align-items:center;
   padding:20px;
 }
-
 .secretContent{
   background:white;
   padding:30px;
@@ -185,7 +162,6 @@ button{
   text-align:center;
   margin-top:40px;
 }
-
 #closeSecretBtn{
   position:fixed;
   top:15px;
@@ -199,34 +175,27 @@ button{
   cursor:pointer;
   z-index:100000;
 }
-
 /* ===== MOBILE ===== */
 @media (max-width:768px){
-
   section{
     padding:40px 15px;
   }
-
   h1{font-size:24px;}
   h2{font-size:20px;}
   p{font-size:15px;}
-
   .card{
     padding:18px;
     width:95%;
   }
-
   /* Timeline cards responsive */
   .memory{
     width:85vw;
     height:auto;
   }
-
   .memory img{
     height:auto;
     aspect-ratio:4/3;
   }
-
   /* Buttons */
   .button-zone{
     width:100%;
@@ -237,36 +206,27 @@ button{
     left:10%;
     font-size:16px;
   }
-
   #noBtn{
     left:55%;
     font-size:16px;
   }
-
   #countdown{
     font-size:22px;
   }
-
   #musicOverlay{
     font-size:20px;
   }
-
 }
-
 </style>
 </head>
-
 <body>
-
 <!-- MUSIC -->
 <audio id="loveSong" loop>
-  <source src="Music /LuanLiedjie.mp3" type="audio/mp3">
+  <source src="Music/LuanLiedjie.mp3" type="audio/mp3">
 </audio>
-
 <div id="musicOverlay">
   <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>
 </div>
-
 <!-- FLOATING HEARTS -->
 <script>
 setInterval(()=>{
@@ -279,7 +239,6 @@ setInterval(()=>{
   setTimeout(()=>heart.remove(),8000);
 },500);
 </script>
-
 <!-- INTRO -->
 <section>
 <div class="card">
@@ -288,7 +247,6 @@ setInterval(()=>{
 <p>Scroll so bietjie-bietjie af...</p>
 </div>
 </section>
-
 <!-- COUNTDOWN -->
 <section>
 <div class="card">
@@ -296,52 +254,40 @@ setInterval(()=>{
 <div id="countdown"></div>
 </div>
 </section>
-
 <!-- TIMELINE -->
 <section>
 <h1>Ons spesiale oomblikkies 📸</h1>
-
 <div class="timeline">
-
 <div class="memory">
-<img src="Images /MatriekAfskeid24.jpg">
+<img src="Images/MatriekAfskeid24.jpg">
 <p>Die dag toe jy my hart gesteel het 💕</p>
 </div>
-
 <div class="memory">
-<img src="Images /BeginDate25.jpg">
+<img src="Images/BeginDate25.jpg">
 <p>Een van my heel gunsteling herinneringe 🥰</p>
 </div>
-
 <div class="memory">
-<img src="Images /DVerjaar25.jpg">
+<img src="Images/DVerjaar25.jpg">
 <p>Ek giggel nou nog as ek daaraan dink! 😂</p>
 </div>
-
 </div>
 </section>
-
 <!-- QUESTION -->
 <section>
 <div class="card">
 <h1>Sal jy my Valentyn wees?</h1>
 <p>Van D ❤️</p>
-
 <div class="button-zone" id="zone">
 <button id="yesBtn">Ja 😍</button>
 <button id="noBtn">Nee 🙄</button>
-</div>
-
+</div
 <div class="result" id="result">
 <h2>Jy’t my nou net die heel gelukkigste meisie gemaak 🥹❤️</h2>
 <p>Jy’s nou vir altyd met my opgesaal 😌</p>
 </div>
-
 </div>
 </section>
-
 <script>
-
 /* MUSIC */
 const music=document.getElementById("loveSong");
 document.getElementById("musicOverlay").onclick=()=>{
@@ -349,7 +295,6 @@ document.getElementById("musicOverlay").onclick=()=>{
  music.volume=0.8;
  musicOverlay.style.display="none";
 };
-
 /* COUNTDOWN */
 const valentines=new Date("Feb 14, 2026 00:00:00").getTime();
 setInterval(()=>{
@@ -360,7 +305,6 @@ setInterval(()=>{
  let mins=Math.floor((d%(1000*60*60))/(1000*60));
  countdown.innerHTML=`${days} Dae ${hours} Ure ${mins} Minute`;
 },1000);
-
 /* HEART TRAIL */
 document.addEventListener("pointermove",e=>{
  const h=document.createElement("div");
@@ -371,78 +315,58 @@ document.addEventListener("pointermove",e=>{
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),1000);
 });
-
 /* RUNNING NO BUTTON */
 const zone=document.getElementById("zone");
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
 const result=document.getElementById("result");
-
 function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
-
 zone.addEventListener("pointermove",e=>{
  const b=noBtn.getBoundingClientRect();
  const z=zone.getBoundingClientRect();
  const d=Math.hypot((b.left+b.width/2)-e.clientX,(b.top+b.height/2)-e.clientY);
-
  if(d<120){
   let dx=(b.left+b.width/2)-e.clientX;
   let dy=(b.top+b.height/2)-e.clientY;
   let mag=Math.hypot(dx,dy)||1;
   dx/=mag; dy/=mag;
-
   let newLeft=(b.left-z.left)+dx*140;
   let newTop=(b.top-z.top)+dy*140;
-
   noBtn.style.left=clamp(newLeft,0,z.width-b.width)+"px";
   noBtn.style.top=clamp(newTop,0,z.height-b.height)+"px";
  }
 });
-
 /* YES BUTTON */
 let secretCounter=0;
-
 yesBtn.onclick=()=>{
  result.style.display="block";
  confetti({particleCount:200,spread:120});
  secretCounter++;
  if(secretCounter>=2) openSecret();
 };
-
 /* SECRET PAGE */
 function openSecret(){
  document.getElementById("secretPage").style.display="flex";
 }
-
 function closeSecret(){
  document.getElementById("secretPage").style.display="none";
 }
-
 document.addEventListener("keydown",e=>{
  if(e.key.toLowerCase()==="s") openSecret();
 });
-
 </script>
-
 <!-- SECRET PAGE -->
 <div id="secretPage">
 <button id="closeSecretBtn" onclick="closeSecret()">✖</button>
-
 <div class="secretContent">
 <h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
-
 <p>Liefste Luan,</p>
-
 <p>
 Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het...
 </p>
-
 <p>Jy het my die heel gelukkigste meisie gemaak. D ❤️</p>
 <p>Vir altyd jou D 💕</p>
-
 </div>
 </div>
-
 </body>
 </html>
-
