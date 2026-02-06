@@ -51,7 +51,7 @@ section{
 }
 /* Extra spacing first screen */
 section:first-of-type{
-  padding-top:90px;
+  padding-top:110px;
 }
 /* ===== CARDS ===== */
 .card{
@@ -65,15 +65,16 @@ section:first-of-type{
 h1{color:#050000;}
 /* ===== TIMELINE ===== */
 .timeline{
+  width:100%;
+  max-width:100vw;
   display:flex;
-  overflow-x:auto;
   gap:20px;
-  padding:20px;
+  overflow-x:auto;
+  padding:30px 20px;
   scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
 }
-/* Hide scrollbar */
 .timeline::-webkit-scrollbar{
   display:none;
 }
@@ -84,8 +85,9 @@ h1{color:#050000;}
   border-radius:20px;
   padding:15px;
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  scroll-snap-align:start;
   flex-shrink:0;
+  scroll-snap-align:center;
+
   display:flex;
   flex-direction:column;
 }
@@ -150,6 +152,7 @@ button{
   justify-content:center;
   align-items:center;
   padding:20px;
+  overflow-y:auto;
 }
 .secretContent{
   background:white;
@@ -158,8 +161,8 @@ button{
   max-width:600px;
   width:100%;
   text-align:center;
-  margin-top:40px;
-}
+  margin-top:60px;
+
 #closeSecretBtn{
   position:fixed;
   top:15px;
@@ -176,16 +179,20 @@ button{
 /* ===== MOBILE ===== */
 @media (max-width:768px){
   section{
-    padding:40px 15px;
+    padding:50px 15px;
   }
-  h1{font-size:24px;}
-  h2{font-size:20px;}
-  p{font-size:15px;}
+  section:first-of-type{
+    padding-top:140px;
+  }
   .card{
-    padding:18px;
     width:95%;
+    padding:18px;
   }
-  /* Timeline cards responsive */
+  /* Timeline mobile */
+  .timeline{
+    padding-left:15px;
+    padding-right:15px;
+  }
   .memory{
     width:85vw;
     height:auto;
@@ -199,27 +206,16 @@ button{
     width:100%;
     height:180px;
   }
-  #yesBtn{
-    left:10%;
-    font-size:16px;
-  }
-  #noBtn{
-    left:55%;
-    font-size:16px;
-  }
-  #countdown{
-    font-size:22px;
-  }
-  #musicOverlay{
-    font-size:20px;
-  }
+  #yesBtn{ left:10%; }
+  #noBtn{ left:55%; }
+  #countdown{ font-size:22px; }
 }
 </style>
 </head>
 <body>
 <!-- MUSIC -->
 <audio id="loveSong" loop>
-  <source src=Music/ LuanLiedjie.mp3" type="audio/mp3">
+  <source src="Music/ LuanLiedjie.mp3" type="audio/mp3">
 </audio>
 <div id="musicOverlay">
   <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>
@@ -321,69 +317,68 @@ function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
 zone.addEventListener("pointermove",e=>{
  const b=noBtn.getBoundingClientRect();
  const z=zone.getBoundingClientRect();
- const d=Math.hypot((b.left+b.width/2)-e.clientX,(b.top+b.height/2)-e.clientY);
+ const d=Math.hypot(
+ (b.left+b.width/2)-e.clientX,
+ (b.top+b.height/2)-e.clientY
+ );
  if(d<120){
   let dx=(b.left+b.width/2)-e.clientX;
   let dy=(b.top+b.height/2)-e.clientY;
   let mag=Math.hypot(dx,dy)||1;
-  dx/=mag; dy/=mag;
+  dx/=mag;
+  dy/=mag;
   let newLeft=(b.left-z.left)+dx*140;
   let newTop=(b.top-z.top)+dy*140;
   noBtn.style.left=clamp(newLeft,0,z.width-b.width)+"px";
   noBtn.style.top=clamp(newTop,0,z.height-b.height)+"px";
  }
 });
-/* YES BUTTON */
+/* SECRET */
 let secretCounter=0;
 yesBtn.onclick=()=>{
  result.style.display="block";
- confetti({particleCount:200,spread:120});
+ confetti({
+   particleCount:200,
+   spread:120
+ });
  secretCounter++;
- if(secretCounter>=2) openSecret();
+ if(secretCounter>=2){
+   openSecret();
+ }
 };
-/* SECRET PAGE */
-let secretCounter=0;
 function openSecret(){
-document.getElementById("secretPage").style.display="flex";
+ document.getElementById("secretPage").style.display="flex";
 }
 function closeSecret(){
-document.getElementById("secretPage").style.display="none";
+ document.getElementById("secretPage").style.display="none";
 }
-/* Trigger by YES spam */
-yesBtn.addEventListener("click",()=>{
-secretCounter++;
-if(secretCounter>=2){
-openSecret();
-}
-});
-/* Trigger by keyboard S */
+/* Keyboard secret */
 document.addEventListener("keydown",e=>{
-if(e.key.toLowerCase()==="s"){
-openSecret();
-}
+ if(e.key.toLowerCase()==="s"){
+  openSecret();
+ }
 });
 </script>
-<!-- HIDDEN SURPRISE PAGE -->
+<!-- SECRET PAGE -->
 <div id="secretPage">
 <button id="closeSecretBtn" onclick="closeSecret()">✖</button>
 <div class="secretContent">
 <h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
 <p>Liefste Luan,</p>
-<p>Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het. Die tyd vlieg as 'n mens soveel pret het, en elke daggie saam met jou is vir my 'n geskenk.
-Dankie dat jy my veilige plek, my vrolikheid en my heel gunsteling mensie is. Jy laat my hart sommer vinniger klop (en my maag vol skoenlappers voel!) elke keer as ek jou sien. Dankie vir al die giggels en die mooi oomblikke wat ons reeds gedeel het.
-Ek waardeer elke herinnering wat ons tot nou toe gemaak het, en ek kan nie wag vir ons toekoms saam nie 😉</p>
-<p>Jy het my die heel gelukkigste meisie gemaak.
-D ❤️
+<p>
+Ek kan skaars glo dit ons al vyf maande saam is, met meer as 6 jaar vandat jy in my lewe ingestap het.
+Die tyd vlieg as 'n mens soveel pret het, en elke daggie saam met jou is vir my 'n geskenk.
+Dankie dat jy my veilige plek, my vrolikheid en my heel gunsteling mensie is.
+Jy laat my hart sommer vinniger klop en my maag vol skoenlappers voel!
 </p>
+<p>
+Ek waardeer elke herinnering wat ons tot nou toe gemaak het,
+en ek kan nie wag vir ons toekoms saam nie 😉
+</p>
+<p>Jy het my die heel gelukkigste meisie gemaak.</p>
+<p>D ❤️</p>
 <p>Vir altyd jou D 💕</p>
 </div>
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
