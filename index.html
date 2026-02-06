@@ -13,20 +13,22 @@ body{
   overflow-x:hidden;
 }
 
-
-  
+/* ===== MUSIC OVERLAY ===== */
 #musicOverlay{
- position:fixed;
- inset:0;
- background:#f3c8c8;
- display:flex;
- justify-content:center;
- align-items:center;
- font-size:24px;
- z-index:999999;
- cursor:pointer;
+  position:fixed;
+  inset:0;
+  background:#f3c8c8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:24px;
+  z-index:999999;
+  cursor:pointer;
+  padding:20px;
+  text-align:center;
 }
-/* Floating Hearts */
+
+/* ===== FLOATING HEARTS ===== */
 .heart{
   position:fixed;
   bottom:-20px;
@@ -34,10 +36,13 @@ body{
   animation:floatUp 8s linear infinite;
   opacity:0.7;
 }
+
 @keyframes floatUp{
   from{transform:translateY(0);}
   to{transform:translateY(-110vh);}
 }
+
+/* ===== SECTIONS ===== */
 section{
   min-height:100vh;
   display:flex;
@@ -47,9 +52,16 @@ section{
   padding:40px 20px;
   text-align:center;
 }
+
+section:first-of-type .card{
+  margin-top:30px;
+}
+
 h1{
   color:#050000;
 }
+
+/* ===== CARDS ===== */
 .card{
   background:white;
   padding:25px;
@@ -58,90 +70,24 @@ h1{
   max-width:650px;
   width:90%;
 }
-  /*
-.memory img{
-  width:100%;
-  max-width:240px;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:15px;
-  margin:10px;
-}
-*
-.memory img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:15px;
-  margin-bottom:10px;
-}
-*/
-.memory img{
-  width:100%;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:15px;
-  margin-bottom:10px;
-}
-  
-/* Countdown */
-#countdown{
-  font-size:28px;
-  font-weight:bold;
-  color:#ff3b3b;
-}
-/* Buttons */
-.button-zone{
-  position:relative;
-  height:150px;
-  width:300px;
-  margin:auto;
-}
-button{
-  position:absolute;
-  padding:14px 24px;
-  border:none;
-  border-radius:50px;
-  font-size:18px;
-  font-weight:bold;
-  cursor:pointer;
-}
-#yesBtn{
-  left:15%;
-  background:#ff4d4d;
-  color:white;
-}
-#noBtn{
-  left:60%;
-  background:#ddd;
-}
-  /*
-.timeline{ 
-  display:flex; 
-  overflow-x:auto; 
-  gap:20px; 
-  padding:20px; 
-  scroll-snap-type:x mandatory; 
-}
-  */
 
-
-.timeline {
+/* ===== TIMELINE ===== */
+.timeline{
   display:flex;
   overflow-x:auto;
   gap:20px;
   padding:20px;
   scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  -webkit-overflow-scrolling:touch;
+  scroll-padding:50%;
 }
 
-.timeline .memory{
-  scroll-snap-align:center;
-  flex-shrink:0;
+/* Hide scrollbar */
+.timeline::-webkit-scrollbar{
+  display:none;
 }
-  
-/*.memory{
+
+.memory{
   width:280px;
   height:340px;
   background:white;
@@ -154,24 +100,57 @@ button{
   flex-direction:column;
   justify-content:flex-start;
 }
-*/
-.memory{
-  width:280px;
-  height:340px;
-  background:white;
-  border-radius:20px;
-  padding:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  scroll-snap-align:center;
-  flex-shrink:0;
-  display:flex;
-  flex-direction:column;
+
+/* Images */
+.memory img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:10px;
 }
 
-  
+/* ===== COUNTDOWN ===== */
+#countdown{
+  font-size:28px;
+  font-weight:bold;
+  color:#ff3b3b;
+}
+
+/* ===== BUTTONS ===== */
+.button-zone{
+  position:relative;
+  height:150px;
+  width:300px;
+  margin:auto;
+}
+
+button{
+  position:absolute;
+  padding:14px 24px;
+  border:none;
+  border-radius:50px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#yesBtn{
+  left:15%;
+  background:#ff4d4d;
+  color:white;
+}
+
+#noBtn{
+  left:60%;
+  background:#ddd;
+}
+
 .result{
   display:none;
 }
+
+/* ===== CURSOR HEART ===== */
 .cursor-heart{
   position:fixed;
   font-size:18px;
@@ -179,16 +158,13 @@ button{
   animation:fadeUp 1s forwards;
   z-index:9999;
 }
+
 @keyframes fadeUp{
-  from{
-    opacity:1;
-    transform:translateY(0);
-  }
-  to{
-    opacity:0;
-    transform:translateY(-25px);
-  }
+  from{opacity:1; transform:translateY(0);}
+  to{opacity:0; transform:translateY(-25px);}
 }
+
+/* ===== SECRET PAGE ===== */
 #secretPage{
   display:none;
   position:fixed;
@@ -198,14 +174,16 @@ button{
   justify-content:center;
   align-items:center;
 }
+
 .secretContent{
   background:white;
   padding:30px;
   border-radius:20px;
   max-width:600px;
+  width:90%;
   text-align:center;
 }
-/* CORNER CLOSE BUTTON */
+
 #closeSecretBtn{
   position:fixed;
   top:15px;
@@ -219,174 +197,46 @@ button{
   cursor:pointer;
   z-index:100000;
 }
-#secretPage{
- display:none;
- position:fixed;
- inset:0;
- background:linear-gradient(180deg,#ffccd5,#fff0f5);
- justify-content:center;
- align-items:center;
- z-index:99999;
-}
-.secretContent{
- background:white;
- padding:30px;
- border-radius:20px;
- text-align:center;
- max-width:600px;
-}
-/* Corner Close Button */
-#closeSecretBtn{
- position:fixed;
- top:15px;
- right:20px;
- background:#ff4d4d;
- color:white;
- border:none;
- font-size:18px;
- padding:10px 14px;
- border-radius:50%;
- cursor:pointer;
- z-index:100000;
-}
-/* ===== MOBILE RESPONSIVE DESIGN ===== */
 
-@media (max-width: 768px) {
+/* ===== MOBILE ===== */
+@media (max-width:768px){
 
-    #click-open {
-        padding: 20px;
-        margin-top: 20px;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    .timeline-container {
-        justify-content: center;
-    }
-
-    .timeline-container img {
-        width: 85%;
-    }
-
-}
-  
-  
-@media (max-width: 768px){
   section{
     padding:30px 15px;
   }
-  h1{
-    font-size:24px;
-  }
-  h2{
-    font-size:20px;
-  }
-  p{
-    font-size:15px;
-  }
+
+  h1{font-size:24px;}
+  h2{font-size:20px;}
+  p{font-size:15px;}
+
   .card{
     padding:18px;
     width:95%;
   }
-  /* Images resize for phones */
- /* .memory img{
-    width:100%;
-    height:auto;
-    max-width:260px;
-  }
-  /* Timeline memory cards */
-  /*
-  .memory{
-    min-width:80%;
-    width:90%;
-    min-width:90%;
-  }
-*//*
-@media (max-width:768px){
 
   .memory{
     width:85vw;
     height:auto;
   }
 
-  .memory img{
-    height:auto;
-    aspect-ratio:4/3;
-  }
-
-}
-  */
-  /* Buttons reposition for mobile */
   .button-zone{
     width:100%;
     height:180px;
   }
+
   #yesBtn{
     left:10%;
     font-size:16px;
-    padding:12px 20px;
   }
+
   #noBtn{
     left:55%;
     font-size:16px;
-    padding:12px 20px;
   }
+
   #countdown{
     font-size:22px;
   }
-  .secretContent{
-    width:90%;
-    padding:20px;
-  }
-  #musicOverlay h2{
-    font-size:20px;
-    padding:20px;
-  }
-  .timeline{
-  display:flex;
-  overflow-x:auto;
-  max-width:100%;
-  gap:20px;
-  padding:20px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-} 
-
-@media (max-width:768px){
-
-  section{
-    padding:30px 15px;
-  }
-
-  .memory{
-    width:85vw;
-    height:auto;
-  }
-
-  .button-zone{
-    width:100%;
-    height:180px;
-  }
-
-  #yesBtn{
-    left:10%;
-    font-size:16px;
-  }
-
-  #noBtn{
-    left:55%;
-    font-size:16px;
-  }
-
-}
-
-
-  
 }
 </style>
 </head>
@@ -564,6 +414,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
