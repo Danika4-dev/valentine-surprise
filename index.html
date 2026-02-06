@@ -282,11 +282,12 @@ setInterval(()=>{
 </section>
 <script>
 /* MUSIC */
-const music=document.getElementById("loveSong");
-document.getElementById("musicOverlay").onclick=()=>{
- music.play();
- music.volume=0.8;
- musicOverlay.style.display="none";
+const music = document.getElementById("loveSong");
+const musicOverlay = document.getElementById("musicOverlay");
+musicOverlay.onclick = () => {
+  music.play();
+  music.volume = 0.8;
+  musicOverlay.style.display = "none";
 };
 /* COUNTDOWN */
 const valentines=new Date("Feb 14, 2026 00:00:00").getTime();
@@ -382,3 +383,4 @@ en ek kan nie wag vir ons toekoms saam nie 😉
 </div>
 </body>
 </html>
+
