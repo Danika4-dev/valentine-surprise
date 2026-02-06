@@ -67,10 +67,18 @@ h1{
   border-radius:15px;
   margin:10px;
 }
-*/
+*
 .memory img{
   width:100%;
   height:200px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:10px;
+}
+*/
+.memory img{
+  width:100%;
+  aspect-ratio:4/3;
   object-fit:cover;
   border-radius:15px;
   margin-bottom:10px;
@@ -107,6 +115,7 @@ button{
   left:60%;
   background:#ddd;
 }
+  /*
 .timeline{ 
   display:flex; 
   overflow-x:auto; 
@@ -114,22 +123,22 @@ button{
   padding:20px; 
   scroll-snap-type:x mandatory; 
 }
+  */
 
 
-.timeline-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
-    padding: 10px;
-    touch-action: pan-x;
+.timeline {
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  padding:20px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
 }
 
-.timeline-container img {
-    width: 80%;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    border-radius: 15px;
+.timeline .memory{
+  scroll-snap-align:center;
+  flex-shrink:0;
 }
   
 /*.memory{
@@ -294,7 +303,7 @@ button{
     width:90%;
     min-width:90%;
   }
-*/
+*//*
 @media (max-width:768px){
 
   .memory{
@@ -308,7 +317,7 @@ button{
   }
 
 }
-  
+  */
   /* Buttons reposition for mobile */
   .button-zone{
     width:100%;
@@ -338,21 +347,46 @@ button{
   .timeline{
   display:flex;
   overflow-x:auto;
+  max-width:100%;
   gap:20px;
   padding:20px;
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-}
-@media (max-width:600px){
+
+
+} 
+
+@media (max-width:768px){
+
+  section{
+    padding:30px 15px;
+  }
+
   .memory{
     width:85vw;
     height:auto;
   }
-  .memory img{
-    height:auto;
-    aspect-ratio:4/3;
+
+  .button-zone{
+    width:100%;
+    height:180px;
   }
+
+  #yesBtn{
+    left:10%;
+    font-size:16px;
+  }
+
+  #noBtn{
+    left:55%;
+    font-size:16px;
+  }
+
+}
+
+
+  
 }
 </style>
 </head>
@@ -362,7 +396,7 @@ button{
   <source src="Music/LuanLiedjie.mp3" type="audio/mp3">
 </audio>
 <div id="musicOverlay">
-  <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>
+  <h2>Tik hier vir 'n oomblik in ons storie ❤️</h2>  
 </div>
 <!-- Floating Hearts Script -->
 <script>
@@ -383,7 +417,7 @@ setInterval(()=>{
 <h2>Ek het vir jou ietsie gemaak ❤️</h2>
 <p>Scroll so bietjie-bietjie af...</p>
 </div>
-</section>
+</section> 
 <!-- SECTION 2 COUNTDOWN -->
 <section>
 <div class="card">
@@ -530,6 +564,7 @@ document.addEventListener("keydown",e=>{
 </div>
 </body>
 </html>
+
 
 
 
