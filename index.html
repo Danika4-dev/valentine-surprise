@@ -342,17 +342,27 @@ yesBtn.onclick=()=>{
  if(secretCounter>=2) openSecret();
 };
 /* SECRET PAGE */
+let secretCounter=0;
 function openSecret(){
- document.getElementById("secretPage").style.display="flex";
+document.getElementById("secretPage").style.display="flex";
 }
 function closeSecret(){
- document.getElementById("secretPage").style.display="none";
+document.getElementById("secretPage").style.display="none";
 }
+/* Trigger by YES spam */
+yesBtn.addEventListener("click",()=>{
+secretCounter++;
+if(secretCounter>=2){
+openSecret();
+}
+});
+/* Trigger by keyboard S */
 document.addEventListener("keydown",e=>{
- if(e.key.toLowerCase()==="s") openSecret();
+if(e.key.toLowerCase()==="s"){
+openSecret();
+}
 });
 </script>
-<!-- SECRET PAGE -->
 <!-- HIDDEN SURPRISE PAGE -->
 <div id="secretPage">
 <button id="closeSecretBtn" onclick="closeSecret()">✖</button>
@@ -370,6 +380,8 @@ D ❤️
 </div>
 </body>
 </html>
+
+
 
 
 
