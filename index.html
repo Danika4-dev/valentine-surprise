@@ -70,6 +70,8 @@ h1{color:#050000;}
   display:flex;
   gap:20px;
   overflow-x:auto;
+  /* ⭐ THIS CENTERS THE CARDS */
+  justify-content:center;
   padding:30px 20px;
   scroll-snap-type:x mandatory;
   overscroll-behavior-x:contain;
@@ -87,7 +89,6 @@ h1{color:#050000;}
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
   flex-shrink:0;
   scroll-snap-align:center;
-
   display:flex;
   flex-direction:column;
 }
@@ -155,26 +156,26 @@ button{
   overflow-y:auto;
 }
 .secretContent{
+  position:relative;   /* ⭐ allows button to anchor to card */
   background:white;
   padding:30px;
   border-radius:20px;
   max-width:600px;
   width:100%;
   text-align:center;
-  margin-top:60px;
-
+  margin-top:60px;  
+/* Corner Close Button */
 #closeSecretBtn{
-  position:fixed;
-  top:15px;
-  right:15px;
+  position:absolute;
+  top:10px;
+  right:10px;
   background:#ff4d4d;
   color:white;
   border:none;
-  font-size:18px;
-  padding:10px 14px;
+  font-size:16px;
+  padding:8px 12px;
   border-radius:50%;
   cursor:pointer;
-  z-index:100000;
 }
 /* ===== MOBILE ===== */
 @media (max-width:768px){
@@ -362,8 +363,8 @@ document.addEventListener("keydown",e=>{
 </script>
 <!-- SECRET PAGE -->
 <div id="secretPage">
-<button id="closeSecretBtn" onclick="closeSecret()">✖</button>
 <div class="secretContent">
+<button id="closeSecretBtn" onclick="closeSecret()">✖</button>
 <h1>💌 ’n Geheime boodskappie net vir Luan 💌</h1>
 <p>Liefste Luan,</p>
 <p>
@@ -383,4 +384,5 @@ en ek kan nie wag vir ons toekoms saam nie 😉
 </div>
 </body>
 </html>
+
 
